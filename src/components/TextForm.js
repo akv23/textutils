@@ -5,8 +5,24 @@ export default function TextForm(props) {
     let newText = text.toUpperCase();
     setText(newText);
   };
-  const handleloClick = () => {
+
+  const handleLoClick = () => {
     let newText = text.toLowerCase();
+    setText(newText);
+  };
+
+  const handleCapitalizeClick = () => {
+    let newText = text.charAt(0).toUpperCase() + text.slice(1);
+    setText(newText);
+  };
+
+  const handleTitleClick = () => {
+    let newText = text.split(' ').map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+    setText(newText);
+  };
+
+  const handleClearClick = () => {
+    let newText = "";
     setText(newText);
   };
 
@@ -28,11 +44,20 @@ export default function TextForm(props) {
             rows="8"
           />
         </div>
+        <button className="btn btn-primary mx-1" onClick={handleCapitalizeClick}>
+          Convert to Capitalize
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleTitleClick}>
+        Convert to Titlecase
+        </button>
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-1" onClick={handleloClick}>
+        <button className="btn btn-primary mx-1" onClick={handleLoClick}>
           Convert to Lowercase
+        </button>
+        <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+          Clear Text
         </button>
       </div>
       <div className="container my-3">
